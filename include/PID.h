@@ -7,12 +7,11 @@ class PID
 {
     float Kp, Ki, Kd;
 
+    float error, prevError;
     float integral, derivative;
+    float output;
 
-    float prevError;
+    PID(float Kp, float Ki, float Kd);
 
-    PID();
-
-    float compute(float error);
-
+    float compute(float setpoint, float input);
 };

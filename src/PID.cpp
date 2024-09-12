@@ -1,10 +1,16 @@
 #include "PID.h"
 
-PID::PID(){}
-
-
-float PID::compute(float error)
+PID::PID(float Kp, float Ki, float Kd)
 {
+    this->Kp = Kp;
+    this->Ki = Ki;
+    this->Kd = Kd;
+}
+
+float PID::compute(float setpoint, float input)
+{
+    error = setpoint - error;
+
     integral = integral + error;
 
     if(error <= 0)
@@ -17,3 +23,4 @@ float PID::compute(float error)
 
     return output;
 }
+
