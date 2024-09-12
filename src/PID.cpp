@@ -9,7 +9,7 @@ PID::PID(float Kp, float Ki, float Kd)
 
 float PID::compute(float setpoint, float input)
 {
-    error = setpoint - error;
+    error = setpoint - input;
 
     integral = integral + error;
 
