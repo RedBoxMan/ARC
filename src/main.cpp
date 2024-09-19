@@ -14,6 +14,8 @@ using namespace vex;
 // A global instance of competition
 competition Competition;
 
+Drive chassis();
+
 
 void pre_auton(void) {
 

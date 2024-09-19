@@ -5,11 +5,16 @@
 //PID Class
 class PID
 {
+
+    private:
+    
     float Kp, Ki, Kd;
 
     float error, prevError;
     float integral, derivative;
     float output;
+
+    public:
 
     PID(float Kp, float Ki, float Kd);
 

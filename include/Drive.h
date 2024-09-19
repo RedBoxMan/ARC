@@ -6,11 +6,15 @@ using namespace vex;
 
 class Drive
 {
+    private:
+
     motor_group left_drive, right_drive;
     //gyro Gyro;
     float wheel_diameter;
 
     float max_voltage;
+
+    public:
 
     Drive(motor_group left_drive, motor_group right_drive, float wheel_diameter, float max_voltage);
 
