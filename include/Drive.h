@@ -21,6 +21,10 @@ class Drive
     void arcade();
     void tank();
 
+    float deg_to_inches(float deg);
+    float brake();
+    float brake(bool left, bool right);
+
     void drive_distance(float distance);
 
     void turn_angle();

@@ -9,3 +9,9 @@ float clamp(float input, float min, float max)
         return max;
     return input;
 }
+
+//Returns PI
+float pi()
+{
+    return atan(1) * 4;
+}
