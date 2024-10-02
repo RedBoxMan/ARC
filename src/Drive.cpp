@@ -1,9 +1,7 @@
 #include "Drive.h"
 
-Drive::Drive(motor_group left_drive, motor_group right_drive, float wheel_diameter, float max_voltage)
-{
-
-}
+Drive::Drive(motor_group left_drive, motor_group right_drive, float wheel_diameter, float max_voltage) : left_drive(left_drive), right_drive(right_drive), wheel_diameter(wheel_diameter), max_voltage(max_voltage)
+{}
 
 void Drive::arcade()
 {

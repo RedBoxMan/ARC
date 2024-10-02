@@ -14,7 +14,7 @@ using namespace vex;
 // A global instance of competition
 competition Competition;
 
-
+Drive chassis(Ldrive, Rdrive, 2.75, 12);
 
 void pre_auton(void) {
 
@@ -25,7 +25,7 @@ void pre_auton(void) {
 
 void autonomous(void) {
  
-
+chassis.drive_distance(10);
 
 }
 
