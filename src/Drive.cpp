@@ -15,12 +15,12 @@ float Drive::deg_to_inches(float deg)
     return deg * pi() / 180 * wheel_diameter;
 }
 
-float Drive::brake()
+void Drive::brake()
 {
     brake(true, true);
 }
 
-float Drive::brake(bool left, bool right)
+void Drive::brake(bool left, bool right)
 {
     if(left)
         left_drive.stop();
@@ -35,7 +35,10 @@ void Drive::drive_distance(float distance)
     float start_left_position = deg_to_inches(left_drive.position(degrees));
     float start_right_position = deg_to_inches(right_drive.position(degrees));
 
-    float current_left_position, current_right_position, average_distance;
+    float current_left_position = deg_to_inches(left_drive.position(degrees));
+    float current_right_position = deg_to_inches(right_drive.position(degrees));
+
+    float average_distance = (current_left_position + current_right_position) / 2;
 
     //  While loop should end when PID is complete
     while(distance - average_distance > 0)
@@ -46,6 +49,9 @@ void Drive::drive_distance(float distance)
         average_distance = (current_left_position + current_right_position) / 2;
 
         float output = drive_PID.compute(distance, average_distance);
+
+        left_drive.spin(forward, output, volt);
+        right_drive.spin(forward, output, volt);
     }
 
     brake();

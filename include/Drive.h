@@ -22,8 +22,8 @@ class Drive
     void tank();
 
     float deg_to_inches(float deg);
-    float brake();
-    float brake(bool left, bool right);
+    void brake();
+    void brake(bool left, bool right);
 
     void drive_distance(float distance);
 

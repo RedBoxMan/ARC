@@ -2,6 +2,8 @@
 
 #include "vex.h"
 
+using namespace vex;
+
 extern motor RFront;
 extern motor RBack;
 
