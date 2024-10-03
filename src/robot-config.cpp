@@ -1,5 +1,7 @@
 #include "robot-config.h"
 
+brain Brain;
+
 motor RFront = motor(PORT11, true);
 motor RBack = motor(PORT1, true);
 

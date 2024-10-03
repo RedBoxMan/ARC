@@ -1,6 +1,10 @@
 #include "Drive.h"
 
-Drive::Drive(motor_group left_drive, motor_group right_drive, float wheel_diameter, float max_voltage) : left_drive(left_drive), right_drive(right_drive), wheel_diameter(wheel_diameter), max_voltage(max_voltage)
+Drive::Drive(motor_group left_drive, motor_group right_drive, float wheel_diameter, float max_voltage) : 
+left_drive(left_drive), 
+right_drive(right_drive), 
+wheel_diameter(wheel_diameter), 
+max_voltage(max_voltage)
 {}
 
 void Drive::arcade()
@@ -49,6 +53,7 @@ void Drive::drive_distance(float distance)
         average_distance = (current_left_position + current_right_position) / 2;
 
         float output = drive_PID.compute(distance, average_distance);
+        output = clamp(output, -max_voltage, max_voltage);
 
         left_drive.spin(forward, output, volt);
         right_drive.spin(forward, output, volt);

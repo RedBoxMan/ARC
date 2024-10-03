@@ -11,7 +11,6 @@ class Drive
     motor_group left_drive, right_drive;
     //gyro Gyro;
     float wheel_diameter;
-
     float max_voltage;
 
     public:
