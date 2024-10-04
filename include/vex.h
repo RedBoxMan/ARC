@@ -6,9 +6,9 @@
 #include "v5.h"
 #include "v5_vcs.h"
 #include "robot-config.h"
+#include "util.h"
 
 #include "PID.h"
-#include "util.h"
 #include "Drive.h"
 
 

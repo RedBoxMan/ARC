@@ -1,10 +1,7 @@
 #include "PID.h"
 
-PID::PID(float Kp, float Ki, float Kd)
+PID::PID(float Kp, float Ki, float Kd):Kp(Kp), Ki(Ki), Kd(Kd)
 {
-    this->Kp = Kp;
-    this->Ki = Ki;
-    this->Kd = Kd;
 }
 
 float PID::compute(float setpoint, float input)
