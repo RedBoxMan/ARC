@@ -36,7 +36,7 @@ void Drive::brake(bool left, bool right)
 //Drives given distance in inches using a PID loop
 void Drive::drive_distance(float distance)
 {
-    PID drive_PID(10, 2.0, 15.0);
+    PID drive_PID(1.0, 1.0, 1.0);
     
     float start_left_position = deg_to_inches(left_drive.position(degrees));
     float start_right_position = deg_to_inches(right_drive.position(degrees));
@@ -46,24 +46,33 @@ void Drive::drive_distance(float distance)
 
     float average_distance = (current_left_position + current_right_position) / 2;
 
+    distance = distance + average_distance;
+
     //  While loop should end when PID is complete
-    while(fabs(average_distance) < distance)
+    while(!drive_PID.isSettled())
     {
-        current_left_position = start_left_position - deg_to_inches(left_drive.position(degrees));
-        current_right_position = start_right_position - deg_to_inches(right_drive.position(degrees));
+        current_left_position =  deg_to_inches(left_drive.position(degrees)) - start_left_position;
+        current_right_position = deg_to_inches(right_drive.position(degrees)) - start_right_position;
 
         average_distance = (current_left_position + current_right_position) / 2;
+        float error = distance - average_distance;
 
-        float output = drive_PID.compute(distance, average_distance);
+        Brain.Screen.clearScreen();
+
+        float output = drive_PID.compute(error);
         output = clamp(output, -max_voltage, max_voltage);
 
         left_drive.spin(forward, output, volt);
         right_drive.spin(forward, output, volt);
 
-        wait(10, msec);
-    }
+        Brain.Screen.setCursor(1,1);
+        Brain.Screen.print(error);
+        Brain.Screen.setCursor(2,1);
+        Brain.Screen.print(output);
 
-    Brain.Screen.print(right_drive.position(degrees));
+        wait(10, msec);
+
+    }
 
     brake();
 }

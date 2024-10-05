@@ -10,13 +10,16 @@ class PID
     
     float Kp, Ki, Kd;
 
-    float error, prevError;
+    float prevError;
     float integral, derivative;
     float output;
+    float timeSpentSettled = 0;
 
     public:
 
     PID(float Kp, float Ki, float Kd);
 
-    float compute(float setpoint, float input);
+    float compute(float error);
+
+    bool isSettled();
 };

@@ -13,5 +13,5 @@ float clamp(float input, float min, float max)
 //Returns PI
 float pi()
 {
-    return atan(1) * 4;
+    return atan(1.0) * 4.0;
 }
