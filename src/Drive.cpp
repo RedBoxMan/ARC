@@ -1,5 +1,10 @@
 #include "Drive.h"
 
+/// @brief Constructor
+/// @param left_drive Left side motors of the drive base
+/// @param right_drive Right side motors of the drive base
+/// @param wheel_diameter The diameter size of the wheel in inches
+/// @param max_voltage The maximum amount of the voltage used in the drivebase (1 - 12)
 Drive::Drive(motor_group left_drive, motor_group right_drive, float wheel_diameter, float max_voltage) : 
 left_drive(left_drive), 
 right_drive(right_drive), 
@@ -7,24 +12,32 @@ wheel_diameter(wheel_diameter),
 max_voltage(max_voltage)
 {}
 
+
 void Drive::arcade()
 {
 
 }
 
+
 void Drive::tank(){}
 
+/// @brief Changes a the degree of a wheel rotation to inches driven
+/// @param deg The degree of rotation of a wheel
+/// @return The inches driven
 float Drive::deg_to_inches(float deg)
 {
     return (deg / 360) * pi() * wheel_diameter;
 }
 
+/// @brief Brakes the drivetrain 
 void Drive::brake()
 {
     brake(true, true);
 }
 
-//Brakes 
+/// @brief Brakes individual sides of the drive train
+/// @param left Left side of the drive train brake
+/// @param right Right side of the drive train brake
 void Drive::brake(bool left, bool right)
 {
     if(left)
@@ -33,7 +46,8 @@ void Drive::brake(bool left, bool right)
         right_drive.stop();
 }
 
-//Drives given distance in inches using a PID loop
+/// @brief Uses the drivetrain to drive the given distance in inches
+/// @param distance The distance to drive in inches
 void Drive::drive_distance(float distance)
 {
     PID drive_PID(1.0, 1.0, 1.0);
