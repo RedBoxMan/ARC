@@ -5,7 +5,6 @@
 //PID Class
 class PID
 {
-
     private:
     
     float Kp, Ki, Kd;
@@ -13,11 +12,12 @@ class PID
     float prevError;
     float integral, derivative;
     float output;
+    float timeToSettle;
     float timeSpentSettled = 0;
 
     public:
 
-    PID(float Kp, float Ki, float Kd);
+    PID(float Kp, float Ki, float Kd, float timeToSettle);
 
     float compute(float error);
 

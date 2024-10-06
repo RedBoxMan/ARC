@@ -4,7 +4,8 @@
 /// @param Kp Proportional
 /// @param Ki Integral
 /// @param Kd Derivative
-PID::PID(float Kp, float Ki, float Kd):Kp(Kp), Ki(Ki), Kd(Kd)
+/// @param timeToSettle The maximum amount of time the sytem waits to settle after settle point has been reached
+PID::PID(float Kp, float Ki, float Kd, float timeToSettle):Kp(Kp), Ki(Ki), Kd(Kd), timeToSettle(timeToSettle)
 {
 }
 
@@ -36,7 +37,7 @@ float PID::compute(float error)
 /// @return Returns TRUE if settled, Returns FALSE if not settled
 bool PID::isSettled()
 {
-    if(timeSpentSettled > 100)
+    if(timeSpentSettled > timeToSettle)
         return true;
     else
         return false;

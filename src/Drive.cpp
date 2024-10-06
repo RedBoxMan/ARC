@@ -15,7 +15,7 @@ max_voltage(max_voltage)
 
 void Drive::arcade()
 {
-
+    
 }
 
 
@@ -50,7 +50,7 @@ void Drive::brake(bool left, bool right)
 /// @param distance The distance to drive in inches
 void Drive::drive_distance(float distance)
 {
-    PID drive_PID(1.0, 1.0, 1.0);
+    PID drive_PID(1.0, 1.0, 1.0, 100);
     
     float start_left_position = deg_to_inches(left_drive.position(degrees));
     float start_right_position = deg_to_inches(right_drive.position(degrees));
