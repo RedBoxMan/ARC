@@ -5,6 +5,7 @@
 
 #include "v5.h"
 #include "v5_vcs.h"
+#include "Sensors.h"
 #include "robot-config.h"
 #include "util.h"
 
