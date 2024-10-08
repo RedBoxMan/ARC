@@ -10,7 +10,7 @@ class PID
     float Kp, Ki, Kd;
 
     float prevError;
-    float integral, derivative;
+    float integral = 0, derivative;
     float output;
     float timeToSettle;
     float timeSpentSettled = 0;

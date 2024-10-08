@@ -1,3 +1,5 @@
+
+
 #include "PID.h"
 
 /// @brief Constructor
@@ -27,8 +29,6 @@ float PID::compute(float error)
     if(output < 0.7 && output > -0.7)
         timeSpentSettled++;
 
-    Brain.Screen.setCursor(5,1);
-    Brain.Screen.print(timeSpentSettled);
     
     return output;
 }

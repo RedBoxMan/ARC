@@ -50,7 +50,7 @@ void Drive::brake(bool left, bool right)
 /// @param distance The distance to drive in inches
 void Drive::drive_distance(float distance)
 {
-    PID drive_PID(1.0, 1.0, 1.0, 100);
+    PID drive_PID(0.9, 0.01, 1.5, 100);
     
     float start_left_position = deg_to_inches(left_drive.position(degrees));
     float start_right_position = deg_to_inches(right_drive.position(degrees));
@@ -74,17 +74,19 @@ void Drive::drive_distance(float distance)
         Brain.Screen.clearScreen();
 
         float output = drive_PID.compute(error);
-        output = clamp(output, -max_voltage, max_voltage);
-
-        left_drive.spin(forward, output, volt);
-        right_drive.spin(forward, output, volt);
 
         Brain.Screen.setCursor(1,1);
         Brain.Screen.print(error);
         Brain.Screen.setCursor(2,1);
         Brain.Screen.print(output);
 
-        wait(10, msec);
+        output = clamp(output, -max_voltage, max_voltage);
+
+        left_drive.spin(forward, output, volt);
+        right_drive.spin(forward, output, volt);
+
+
+        wait(15, msec);
 
     }
 
