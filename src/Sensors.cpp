@@ -1,55 +1,53 @@
 #include "Sensors.h"
 
-    template<typename P1, typename P2, typename ... Param>
-    inertial_group::inertial_group(P1 &p1, P2 &p2, Param& ... param)
+    template<typename... Param>
+    inertial_group::inertial_group(Param ... param) : size(sizeof...(param))
     {
-        inertialList.appendNode(P1);
-        inertialList.appendNode(P2);
-
-        const auto remainder = inertialList.appendNode(param...);
-    }
-
-    float inertial_group::average()
-    {
-        
+        inertial test[] = {inertial(param...)};
+        list = test;
     }
 
     void inertial_group::calibrate()
     {
 
     }
+
     bool inertial_group::isCalibrating()
     {
-
+        return true;
     }
 
     void inertial_group::resetHeading()
     {
 
     }
+
     void inertial_group::setHeading(float heading)
     {
 
     }
+
     float inertial_group::getHeading()
     {
-
-    }
+        return 0;
+    }   
 
     void inertial_group::resetRotation()
     {
 
     }
+
     void inertial_group::setRotation(float rotation)
     {
 
     }
+
     float inertial_group::getRotation()
     {
-
+        return 0;
     }
 
     float inertial_group::acceleration(axisType axis)
     {
-
+        return 0;
     }

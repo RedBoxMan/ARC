@@ -15,6 +15,9 @@ using namespace vex;
 competition Competition;
 
 Drive chassis(motor_group(LBack, LFront), motor_group(RBack, RFront), 3.25, 12);
+//inertial_group inertialSensors(PORT16, PORT17);
+
+inertial test[] = {inertial(PORT16), inertial(PORT17)};
 
 void pre_auton(void) {
 
@@ -25,8 +28,11 @@ void pre_auton(void) {
 
 void autonomous(void) {
 
+inertialSensors.calibrate();
+
+Brain.Screen.print("Passed calibration");
  
-chassis.drive_distance(30);
+//chassis.drive_distance(30);
 
 }
 

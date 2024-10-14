@@ -8,12 +8,13 @@ class inertial_group
 {
     private:
 
-    LinkedList<vex::inertial> inertialList;
+    inertial* list;
+    int size = 0;
 
     public:
 
-    template<typename P1, typename P2, typename ... Param>
-    inertial_group(P1 &p1, P2 &p2, Param& ... param);
+    template<typename... Param>
+    inertial_group(Param ... param);
 
     float average();
 
