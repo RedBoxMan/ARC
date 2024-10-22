@@ -8,13 +8,13 @@ class inertial_group
 {
     private:
 
-    inertial* list;
+    inertial* sensors;
     int size = 0;
 
-    public:
 
-    template<typename... Param>
-    inertial_group(Param ... param);
+    public:
+    
+    inertial_group(inertial * sensorArray, int arraySize);
 
     float average();
 
@@ -22,7 +22,7 @@ class inertial_group
     bool isCalibrating();
 
     void resetHeading();
-    void setHeading(float heading);
+    void setHeading(float heading, rotationUnits unit);
     float getHeading();
 
     void resetRotation();
