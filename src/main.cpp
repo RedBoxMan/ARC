@@ -26,8 +26,6 @@ void pre_auton(void) {
 
 
 void autonomous(void) {
-float output = test.getHeading();
-output = 1;
  
 //chassis.drive_distance(30);
 
@@ -38,10 +36,13 @@ output = 1;
 void usercontrol(void) {
   // User control code here, inside the loop
   while (1) {
-    
+    float output = test.getHeading();
+    Brain.Screen.setCursor(5,1);
+    Brain.Screen.print(output);
 
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
+    Brain.Screen.clearScreen();
   }
 }
 

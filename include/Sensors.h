@@ -26,8 +26,8 @@ class inertial_group
     float getHeading();
 
     void resetRotation();
-    void setRotation(float rotation);
-    float getRotation();
+    void setRotation(float rotation, rotationUnits units);
+    float getRotation(rotationUnits units);
 
     float acceleration(axisType axis);
 
